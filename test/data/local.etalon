@@ -1,0 +1,21 @@
+[Nothing] [TestLogging::TestLevels::WriteLocalLevel] Level set to Log::debug
+[ Debug ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[Notice ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[Warning] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[ Info  ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[ Error ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[Nothing] [TestLogging::TestLevels::WriteLocalLevel] Level set to Log::notice
+[Notice ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[Warning] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[ Info  ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[ Error ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[Nothing] [TestLogging::TestLevels::WriteLocalLevel] Level set to Log::warning
+[Warning] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[ Info  ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[ Error ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[Nothing] [TestLogging::TestLevels::WriteLocalLevel] Level set to Log::info
+[ Info  ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[ Error ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[Nothing] [TestLogging::TestLevels::WriteLocalLevel] Level set to Log::error
+[ Error ] [TestLogging::TestLevels::WriteLocalLevel::PrintLevels] 
+[Nothing] [TestLogging::TestLevels::WriteLocalLevel] Level set to Log::nothing

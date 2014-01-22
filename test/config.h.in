@@ -1,0 +1,7 @@
+#ifndef CONFIG_H_IN
+#define	CONFIG_H_IN
+
+#define DATA_DIR "@TEST_DIR@/data/"
+
+#endif	/* CONFIG_H_IN */
+
