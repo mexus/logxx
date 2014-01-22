@@ -56,7 +56,10 @@ namespace logxx {
                 std::ostream& Print(std::ostream&, T t, Args... args) const;
                 std::ostream& Print(std::ostream&) const;
 
+                friend std::ostream& logxx::endl(std::ostream&);
         };
+        
+        std::ostream& endl(std::ostream&);
         
 } //namespace logxx
 

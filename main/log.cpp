@@ -53,6 +53,12 @@ namespace logxx {
                 return s;
         }
 
+        std::ostream& endl(std::ostream& s) {
+                s << std::endl;
+                Log::lock.unlock();
+                return s;
+        }
+
         std::ostream& Log::Print(std::ostream& s) const {
                 return s;
         }
