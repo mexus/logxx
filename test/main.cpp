@@ -5,6 +5,9 @@ int main() {
         
         TestLogging logging;
         res &= logging.RunTest();
+
+	if (res)
+		logging.DeleteOutputFiles();
         
         return res ? 0 : 1;
 }

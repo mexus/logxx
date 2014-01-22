@@ -24,6 +24,7 @@ public:
         virtual ~TestLogging();
         
         bool RunTest();
+	void DeleteOutputFiles();
         
 private:
         static Log cLog;

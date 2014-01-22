@@ -23,12 +23,16 @@ TestLogging::TestLogging() {
 }
 
 TestLogging::~TestLogging() {
-        S_LOG("~TestLogging");
+}
+
+void TestLogging::DeleteOutputFiles(){
+        S_LOG("DeleteOutputFiles");
         for (const std::string &name : outputFiles){
                 std::string fullName = dataDir + name + outputPrefix;
                 if (std::remove(fullName.c_str()) != 0)
-                        log(Log::warning) << "Unable to delete file {" << fullName << "}" << Log::endl;
+                        log(logxx::warning) << "Unable to delete file {" << fullName << "}" << Log::endl;
         }
+	outputFiles.clear();
 }
 
 bool TestLogging::TestRedirection() {
@@ -37,7 +41,7 @@ bool TestLogging::TestRedirection() {
         outputFiles.push_back("redirect");
         
         log.OverrideStream(outFilename);
-        log(Log::info) << "Testing redirection" << Log::endl;
+        log(logxx::info) << "Testing redirection" << Log::endl;
         
         return CompareFiles("redirect");
 }
@@ -64,49 +68,50 @@ bool TestLogging::TestLevels() {
 }
 
 void TestLogging::WriteInheritedLevel(Log& log) const {
-        log.OverrideLogLevel(Log::debug);
+        log.OverrideLogLevel(logxx::debug);
         Log log2(log, "WriteInheritedLevel");
-        log.OverrideLogLevel(Log::error);
+        log.OverrideLogLevel(logxx::error);
         PrintLevels(log2);
 }
 
 void TestLogging::WriteGlobalLevel(Log& l) const {
         Log log(l, "WriteGlobalLevel");
-#define LVL(level) Log::SetLogLevel(level); log(Log::nothing) << "Level set to " #level << Log::endl; PrintLevels(log);
-        LVL(Log::debug);
-        LVL(Log::notice);
-        LVL(Log::warning);
-        LVL(Log::info);
-        LVL(Log::error);
-        LVL(Log::nothing);
+#define LVL(level) Log::SetLogLevel(level); log(logxx::nothing) << "Level set to " #level << Log::endl; PrintLevels(log);
+        LVL(logxx::debug);
+        LVL(logxx::notice);
+        LVL(logxx::warning);
+        LVL(logxx::info);
+        LVL(logxx::error);
+        LVL(logxx::nothing);
 #undef LVL
-        Log::SetLogLevel(Log::debug);
+        Log::SetLogLevel(logxx::debug);
 }
 
 void TestLogging::WriteLocalLevel(Log& l) const {
         Log log(l, "WriteLocalLevel");
-#define LVL(level) log.OverrideLogLevel(level); log(Log::nothing) << "Level set to " #level << Log::endl; PrintLevels(log);
-        LVL(Log::debug);
-        LVL(Log::notice);
-        LVL(Log::warning);
-        LVL(Log::info);
-        LVL(Log::error);
-        LVL(Log::nothing);
+#define LVL(level) log.OverrideLogLevel(level); log(logxx::nothing) << "Level set to " #level << Log::endl; PrintLevels(log);
+        LVL(logxx::debug);
+        LVL(logxx::notice);
+        LVL(logxx::warning);
+        LVL(logxx::info);
+        LVL(logxx::error);
+        LVL(logxx::nothing);
 #undef LVL
-        Log::SetLogLevel(Log::debug);
+        Log::SetLogLevel(logxx::debug);
 }
 
 void TestLogging::PrintLevels(Log& log) const {
         Log currentLog(log, "PrintLevels");
-        currentLog(Log::debug)   << Log::endl;
-        currentLog(Log::notice)  << Log::endl;
-        currentLog(Log::warning) << Log::endl;
-        currentLog(Log::info)    << Log::endl;
-        currentLog(Log::error)   << Log::endl;
+        currentLog(logxx::debug)   << Log::endl;
+        currentLog(logxx::notice)  << Log::endl;
+        currentLog(logxx::warning) << Log::endl;
+        currentLog(logxx::info)    << Log::endl;
+        currentLog(logxx::error)   << Log::endl;
 }
 
 bool TestLogging::CompareFiles(const std::string& name) const {
         S_LOG("CompareFiles");
+	log(logxx::debug) << "Comparing files {" << name << "}" << Log::endl;
         std::string output = dataDir + name + outputPrefix;
         std::string original = dataDir + name + etalonPrefix;
         std::ifstream res(output), etalon(original);
@@ -115,21 +120,21 @@ bool TestLogging::CompareFiles(const std::string& name) const {
                         auto c1 = res.get();
                         auto c2 = etalon.get();
                         if (res.good() && !etalon.good()){
-                                log(Log::error) << "Problem while reading etalon file at " << res.tellg() << Log::endl;
+                                log(logxx::error) << "Problem while reading etalon file at " << res.tellg() << Log::endl;
                                 return false;
                         } else if (!res.good() && etalon.good()){
-                                log(Log::error) << "Problem while reading result file at " << etalon.tellg() << Log::endl;
+                                log(logxx::error) << "Problem while reading result file at " << etalon.tellg() << Log::endl;
                                 return false;
                         } else if (!res.good() || !etalon.good())
                                 break;
                         if (c1 != c2){
-                                log(Log::error) << "At " << etalon.tellg() << ": [" << (char)c1 << "] != [" << (char)c2 << "]" << Log::endl;
+                                log(logxx::error) << "At " << etalon.tellg() << ": [" << (char)c1 << "] != [" << (char)c2 << "]" << Log::endl;
                                 return false;
                         }
                 }
                 return true;
         } else {
-                log(Log::error) << "Can't open files for comparison: {" << output << "} and {" << original << "}" <<
+                log(logxx::error) << "Can't open files for comparison: {" << output << "} and {" << original << "}" <<
                         Log::endl;
                 return false;
         }
@@ -138,17 +143,17 @@ bool TestLogging::CompareFiles(const std::string& name) const {
 bool TestLogging::RunTest() {
         S_LOG("RunTest");
         bool res;
-        Log::SetLogLevel(Log::debug);
-        log(Log::info) << "Running tests" << Log::endl;
+        Log::SetLogLevel(logxx::debug);
+        log(logxx::info) << "Running tests" << Log::endl;
         if (TestRedirection()){
                 res = TestLevels();
         } else
                 res = false;
         log.OverrideStream();
         if (res)
-                log(Log::info) << "OK" << Log::endl;
+                log(logxx::info) << "OK" << Log::endl;
         else
-                log(Log::info) << "FAILED" << Log::endl;
+                log(logxx::info) << "FAILED" << Log::endl;
         return res;
 }
 
