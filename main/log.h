@@ -9,24 +9,24 @@
 
 namespace logxx {
 
+	enum LogLevel {
+		debug = 0,
+		notice = 1,
+		warning = 2,
+		info = 3,
+		error = 4,
+		nothing = 5
+	};
+
         class Log {
         public:
-                enum LogLevel {
-                        debug = 0,
-                        notice = 1,
-                        warning = 2,
-                        info = 3,
-                        error = 4,
-                        nothing = 5
-                };
-
                 Log(const std::string& label = std::string());
                 Log(const Log&, const std::string& label, bool inheritLevel = true);
                 virtual ~Log();
 
                 void OverrideLogLevel();
-                void OverrideLogLevel(Log::LogLevel);
-                static void SetLogLevel(Log::LogLevel);
+                void OverrideLogLevel(LogLevel);
+                static void SetLogLevel(LogLevel);
 
                 void OverrideStream();
                 void OverrideStream(const std::shared_ptr<std::ostream> &);
@@ -34,7 +34,7 @@ namespace logxx {
                 static void SetStream(std::ostream &);
 
                 template<class ...Args>
-                std::ostream& operator()(Log::LogLevel, Args... args);
+                std::ostream& operator()(LogLevel, Args... args);
 
                 static std::ostream& endl(std::ostream&);
         private:
@@ -61,10 +61,10 @@ namespace logxx {
 } //namespace logxx
 
 #define S_LOG(label) \
-        static Log log(cLog, label)
+        static logxx::Log log(cLog, label)
 
 #define D_LOG(label) \
-        Log log(cLog, label)
+        Log logxx::log(cLog, label)
 
 #include "log.tcc"
 

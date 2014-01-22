@@ -7,17 +7,17 @@
 namespace logxx {
 
         std::mutex Log::lock;
-        const std::map<Log::LogLevel, std::string> Log::levelMessages {
-                {Log::debug,    " Debug "},
-                {Log::notice,   "Notice "},
-                {Log::warning,  "Warning"},
-                {Log::info,     " Info  "},
-                {Log::error,    " Error "},
-                {Log::nothing,  "Nothing"}
+        const std::map<LogLevel, std::string> Log::levelMessages {
+                {logxx::debug,    " Debug "},
+                {logxx::notice,   "Notice "},
+                {logxx::warning,  "Warning"},
+                {logxx::info,     " Info  "},
+                {logxx::error,    " Error "},
+                {logxx::nothing,  "Nothing"}
         };
         std::ostream Log::cnull(0);
         std::ostream* Log::defaultStream(&std::cout);
-        Log::LogLevel Log::globalLogLevel = Log::debug;
+        LogLevel Log::globalLogLevel = logxx::debug;
 
         Log::Log(const std::string& label) : label(label) {
 
@@ -57,11 +57,11 @@ namespace logxx {
                 return s;
         }
 
-        void Log::SetLogLevel(Log::LogLevel l) {
+        void Log::SetLogLevel(LogLevel l) {
                 globalLogLevel = l;
         }
 
-        Log::LogLevel Log::GetLogLevel() const {
+        LogLevel Log::GetLogLevel() const {
                 if (overrideLogLevel)
                         return *(overrideLogLevel.get());
                 else
@@ -72,7 +72,7 @@ namespace logxx {
                 overrideLogLevel.reset();
         }
 
-        void Log::OverrideLogLevel(Log::LogLevel l) {
+        void Log::OverrideLogLevel(LogLevel l) {
                 if (overrideLogLevel){
                         *(overrideLogLevel.get()) = l;
                 } else

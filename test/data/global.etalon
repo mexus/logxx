@@ -1,21 +1,21 @@
-[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to Log::debug
+[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to logxx::debug
 [ Debug ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
 [Notice ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
 [Warning] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
 [ Info  ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
 [ Error ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
-[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to Log::notice
+[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to logxx::notice
 [Notice ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
 [Warning] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
 [ Info  ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
 [ Error ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
-[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to Log::warning
+[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to logxx::warning
 [Warning] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
 [ Info  ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
 [ Error ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
-[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to Log::info
+[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to logxx::info
 [ Info  ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
 [ Error ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
-[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to Log::error
+[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to logxx::error
 [ Error ] [TestLogging::TestLevels::WriteGlobalLevel::PrintLevels] 
-[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to Log::nothing
+[Nothing] [TestLogging::TestLevels::WriteGlobalLevel] Level set to logxx::nothing
