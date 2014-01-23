@@ -54,9 +54,7 @@ namespace logxx {
         }
 
         std::ostream& endl(std::ostream& s) {
-                s << std::endl;
-                Log::lock.unlock();
-                return s;
+                return Log::endl(s);
         }
 
         std::ostream& Log::Print(std::ostream& s) const {
@@ -65,6 +63,10 @@ namespace logxx {
 
         void Log::SetLogLevel(LogLevel l) {
                 globalLogLevel = l;
+        }
+        
+        void SetLogLevel(LogLevel l){
+                Log::SetLogLevel(l);
         }
 
         LogLevel Log::GetLogLevel() const {
@@ -106,6 +108,10 @@ namespace logxx {
 
         void Log::SetStream(std::ostream& stream) {
                 defaultStream = &stream;
+        }
+        
+        void SetStream(std::ostream& s){
+                Log::SetStream(s);
         }
 
 } //namespace logxx
