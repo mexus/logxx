@@ -67,7 +67,7 @@ namespace logxx {
         static logxx::Log log(cLog, label)
 
 #define D_LOG(label) \
-        Log logxx::log(cLog, label)
+        logxx::Log log(cLog, label)
 
 #include "log.tcc"
 
