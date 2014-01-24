@@ -1,5 +1,8 @@
+#ifndef LOG_HELPER_TCC
+#define LOG_HELPER_TCC
+
 #include <iostream>
-#include "log.h"
+#include "logxx.h"
 
 namespace logxx {
 
@@ -24,3 +27,5 @@ namespace logxx {
         }
         
 } // namespace logxx
+
+#endif // LOG_HELPER_TCC

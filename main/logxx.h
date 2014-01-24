@@ -69,7 +69,7 @@ namespace logxx {
 #define D_LOG(label) \
         logxx::Log log(cLog, label)
 
-#include "log.tcc"
+#include "logxx.tcc"
 
 #endif	/* LOG_HELPER_H */
 

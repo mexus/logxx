@@ -13,7 +13,7 @@
 #include <vector>
 
 #define protected public
-#include "../main/log.h"
+#include "../main/logxx.h"
 #undef protected
 
 using namespace logxx;

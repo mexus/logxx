@@ -9,5 +9,5 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0")
 add_executable(logxx-test
         main.cpp
         test_log.cpp
-        ../main/log.cpp
+        ../main/logxx.cpp
 )

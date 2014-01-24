@@ -2,7 +2,7 @@
 #include <memory>
 #include <fstream>
 
-#include "log.h"
+#include "logxx.h"
 
 namespace logxx {
 
