@@ -48,8 +48,10 @@ namespace logxx {
         }
 
         std::ostream& Log::endl(std::ostream& s) {
-                s << std::endl;
-                lock.unlock();
+                if (s.good()){
+                        s << std::endl;
+                        lock.unlock();
+                }
                 return s;
         }
 
