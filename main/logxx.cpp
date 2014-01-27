@@ -63,12 +63,20 @@ namespace logxx {
                 return s;
         }
 
-        void Log::SetLogLevel(LogLevel l) {
+        void Log::GlobalLogLevel(LogLevel l) {
                 globalLogLevel = l;
         }
+
+        LogLevel Log::GlobalLogLevel() {
+                return globalLogLevel;
+        }
+
+        void GlobalLogLevel(LogLevel l){
+                Log::GlobalLogLevel(l);
+        }
         
-        void SetLogLevel(LogLevel l){
-                Log::SetLogLevel(l);
+        LogLevel GlobalLogLevel(){
+                return Log::GlobalLogLevel();
         }
 
         LogLevel Log::GetLogLevel() const {

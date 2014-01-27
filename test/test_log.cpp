@@ -76,7 +76,7 @@ void TestLogging::WriteInheritedLevel(Log& log) const {
 
 void TestLogging::WriteGlobalLevel(Log& l) const {
         Log log(l, "WriteGlobalLevel");
-#define LVL(level) Log::SetLogLevel(level); log(logxx::nothing) << "Level set to " #level << Log::endl; PrintLevels(log);
+#define LVL(level) Log::GlobalLogLevel(level); log(logxx::nothing) << "Level set to " #level << Log::endl; PrintLevels(log);
         LVL(logxx::debug);
         LVL(logxx::notice);
         LVL(logxx::warning);
@@ -84,7 +84,7 @@ void TestLogging::WriteGlobalLevel(Log& l) const {
         LVL(logxx::error);
         LVL(logxx::nothing);
 #undef LVL
-        Log::SetLogLevel(logxx::debug);
+        Log::GlobalLogLevel(logxx::debug);
 }
 
 void TestLogging::WriteLocalLevel(Log& l) const {
@@ -97,7 +97,7 @@ void TestLogging::WriteLocalLevel(Log& l) const {
         LVL(logxx::error);
         LVL(logxx::nothing);
 #undef LVL
-        Log::SetLogLevel(logxx::debug);
+        Log::GlobalLogLevel(logxx::debug);
 }
 
 void TestLogging::PrintLevels(Log& log) const {
@@ -143,7 +143,7 @@ bool TestLogging::CompareFiles(const std::string& name) const {
 bool TestLogging::RunTest() {
         S_LOG("RunTest");
         bool res;
-        Log::SetLogLevel(logxx::debug);
+        Log::GlobalLogLevel(logxx::debug);
         log(logxx::info) << "Running tests" << Log::endl;
         if (TestRedirection()){
                 res = TestLevels();

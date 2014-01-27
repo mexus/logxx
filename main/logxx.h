@@ -26,7 +26,8 @@ namespace logxx {
 
                 void OverrideLogLevel();
                 void OverrideLogLevel(LogLevel);
-                static void SetLogLevel(LogLevel);
+                static void GlobalLogLevel(LogLevel);
+                static LogLevel GlobalLogLevel();
 
                 void OverrideStream();
                 void OverrideStream(const std::shared_ptr<std::ostream> &);
@@ -58,7 +59,8 @@ namespace logxx {
         };
         
         std::ostream& endl(std::ostream&);
-        void SetLogLevel(LogLevel);
+        void GlobalLogLevel(LogLevel);
+        LogLevel GlobalLogLevel();
         void SetStream(std::ostream &);
         
 } //namespace logxx
